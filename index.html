@@ -24,13 +24,17 @@
         body {
             background-color: var(--light-bg);
             color: var(--text-color);
+            overflow-x: hidden;
         }
 
-        /* Üst Menü */
+        /* Üst Menü ve Navigasyon */
         header {
             background-color: var(--dark-bg);
             color: white;
             border-bottom: 4px solid var(--primary-red);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .top-bar {
@@ -40,10 +44,12 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 15px 20px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
             color: white;
             display: flex;
@@ -59,19 +65,24 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 14px;
+            font-weight: 500;
             transition: color 0.3s;
             cursor: pointer;
+            padding: 5px 8px;
+            border-radius: 4px;
         }
 
         nav ul li a:hover, nav ul li a.active {
             color: var(--primary-red);
+            background: rgba(255,255,255,0.05);
         }
 
         /* Sayfa Yönetimi (SPA Mantığı) */
@@ -90,7 +101,13 @@
             display: grid;
             grid-template-columns: 300px 1fr;
             gap: 20px;
-            padding: 0 20px;
+            padding: 0 15px;
+        }
+
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Lisans Sorgulama Kutusu (Sol Kenar) */
@@ -154,12 +171,12 @@
         }
 
         .result-card img {
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             object-fit: cover;
             border-radius: 50%;
-            border: 2px solid var(--primary-red);
-            margin-bottom: 10px;
+            border: 3px solid var(--primary-red);
+            margin-bottom: 12px;
         }
 
         .result-info {
@@ -167,7 +184,7 @@
         }
 
         .result-info p {
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             font-size: 13px;
         }
 
@@ -176,6 +193,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+            min-width: 0; /* Flexbox taşmasını önler */
         }
 
         .hero-news {
@@ -186,21 +204,29 @@
             border-left: 5px solid var(--primary-red);
         }
 
+        .hero-news span {
+            font-size: 12px;
+            color: var(--primary-red);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
         .hero-news h2 {
-            margin-bottom: 10px;
+            margin: 8px 0;
             color: var(--dark-bg);
-            font-size: 22px;
+            font-size: 20px;
         }
 
         .hero-news p {
             color: #555;
             line-height: 1.6;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
+            font-size: 14px;
         }
 
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 15px;
         }
 
@@ -234,7 +260,7 @@
             color: #666;
         }
 
-        /* Alt Sayfa Tasarımları (Futbolcular, Hakemler vb.) */
+        /* Alt Sayfa Tasarımları */
         .sub-page-container {
             max-width: 1200px;
             margin: 20px auto;
@@ -249,12 +275,14 @@
             border-bottom: 2px solid var(--primary-red);
             padding-bottom: 10px;
             margin-bottom: 20px;
+            font-size: 22px;
         }
 
         .sub-page-container p {
             color: #555;
             line-height: 1.6;
             margin-bottom: 15px;
+            font-size: 14px;
         }
 
         /* Alt Alan (Footer) */
@@ -264,23 +292,13 @@
             text-align: center;
             padding: 20px;
             margin-top: 40px;
-            font-size: 14px;
-        }
-
-        @media (max-width: 768px) {
-            .main-container {
-                grid-template-columns: 1fr;
-            }
-            .top-bar {
-                flex-direction: column;
-                gap: 10px;
-            }
+            font-size: 13px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Üst Menü -->
+    <!-- Üst Menü / Gerçek TFF Kategorileri -->
     <header>
         <div class="top-bar">
             <div class="logo" onclick="switchPage('home')">
@@ -289,11 +307,13 @@
             <nav>
                 <ul>
                     <li><a onclick="switchPage('home')" class="active" id="nav-home">Ana Sayfa</a></li>
-                    <li><a onclick="switchPage('players')" id="nav-players">Futbolcular</a></li>
-                    <li><a onclick="switchPage('referees')" id="nav-referees">Hakemler</a></li>
-                    <li><a onclick="switchPage('clubs')" id="nav-clubs">Kulüpler</a></li>
-                    <li><a onclick="switchPage('announcements')" id="nav-announcements">Duyurular</a></li>
-                    <li><a onclick="switchPage('contact')" id="nav-contact">İletişim</a></li>
+                    <li><a onclick="switchPage('tff')" id="nav-tff">TFF Kurumsal</a></li>
+                    <li><a onclick="switchPage('mill takimlar')" id="nav-mill-takimlar">Milli Takımlar</a></li>
+                    <li><a onclick="switchPage('ligler')" id="nav-ligler">Ligler</a></li>
+                    <li><a onclick="switchPage('kupalar')" id="nav-kupalar">Kupalar</a></li>
+                    <li><a onclick="switchPage('kadin futbolu')" id="nav-kadin-futbolu">Kadın Futbolu</a></li>
+                    <li><a onclick="switchPage('fgd')" id="nav-fgd">FGD</a></li>
+                    <li><a onclick="switchPage('bilgi bankasi')" id="nav-bilgi-bankasi">Bilgi Bankası</a></li>
                 </ul>
             </nav>
         </div>
@@ -313,7 +333,8 @@
                 </form>
 
                 <div id="resultCard" class="result-card">
-                    <img id="resPhoto" src="" alt="Kişi Fotoğrafı">
+                    <!-- İstediğin Hızlı Resim linki entegre edildi -->
+                    <img id="resPhoto" src="https://hizliresim.com/heiqfzop" alt="Kişi Fotoğrafı" onerror="this.src='https://via.placeholder.com/90?text=Foto'">
                     <div class="result-info">
                         <p><strong>Ad Soyad:</strong> <span id="resName"></span></p>
                         <p><strong>Yaş:</strong> <span id="resAge"></span></p>
@@ -326,42 +347,42 @@
             <!-- Sağ Panel: Haberler ve Akış -->
             <main class="content-area">
                 <div class="hero-news">
-                    <span>Milli Takım</span>
-                    <h2>A Millî Takımımızın UEFA Uluslar Ligi Aday Kadrosu Açıklandı!</h2>
-                    <p>Teknik direktörümüz yönetiminde eylül ayında oynanacak zorlu karşılaşmaların kamp programı ve 28 kişilik aday kadrosu netleşti. Milliler Riva Hasan Doğan Kamp Eğitim Merkezi'nde toplanıyor.</p>
-                    <a href="#" style="color: var(--primary-red); font-weight: bold; text-decoration: none;">Haberin Devamı &rarr;</a>
+                    <span>Milli Takımlar</span>
+                    <h2>A Millî Takımımızın UEFA Uluslar Ligi Aday Kadrosu ve Kamp Programı Netleşti</h2>
+                    <p>A Millî Futbol Takımımızın eylül ayında oynayacağı kritik karşılaşmaların hazırlıkları Riva Hasan Doğan Kamp ve Eğitim Tesisleri'nde başlayacak. Teknik heyet basın toplantısı düzenleyecek.</p>
+                    <a href="#" style="color: var(--primary-red); font-weight: bold; text-decoration: none; font-size: 14px;">Haberin Devamı &rarr;</a>
                 </div>
 
                 <div class="news-grid">
                     <div class="news-card">
-                        <span>Hakemler</span>
-                        <h4>Trendyol Süper Lig'de Hafta Hakemleri Duyuruldu</h4>
-                        <p>Merkez Hakem Kurulu (MHK), bu hafta oynanacak kritik maçları yönetecek hakem kadrolarını açıkladı.</p>
+                        <span>Trendyol Süper Lig</span>
+                        <h4>Süper Lig'de Hafta Müsabaka Görevlileri Açıklandı</h4>
+                        <p>Merkez Hakem Kurulu tarafından yapılan dijital atama yöntemiyle haftanın hakemleri netleşti.</p>
                     </div>
                     <div class="news-card">
-                        <span>Altyapı</span>
-                        <h4>U-19 Gelişim Ligi Finalleri Başlıyor</h4>
-                        <p>Türkiye'nin dört bir yanından gelen genç yeteneklerin şampiyonluk mücadelesi futbolseverlerle buluşuyor.</p>
+                        <span>Ziraat Türkiye Kupası</span>
+                        <h4>Türkiye Kupası Eleme Turu Kura Çekimi</h4>
+                        <p>Futbol heyecanının alt liglerden süper lige doruğa çıkacağı kura çekimi tarihi duyuruldu.</p>
+                    </div>
+                    <div class="news-card">
+                        <span>Kadın Futbolu</span>
+                        <h4>Suwen Kadın Futbol Süper Ligi Fikstürü Çekildi</h4>
+                        <p>Yeni sezonda şampiyonluk mücadelesi verecek kadın futbol takımlarının ilk hafta eşleşmeleri belli oldu.</p>
                     </div>
                     <div class="news-card">
                         <span>Disiplin Kurulu</span>
-                        <h4>PFDK Kararları Açıklandı</h4>
-                        <p>Profesyonel Futbol Disiplin Kurulu'nun son toplantısında alınan cezalar ve resmi kararlar tebliğ edildi.</p>
+                        <h4>PFDK Sezonun İlk Cezalarını Açıkladı</h4>
+                        <p>Profesyonel Futbol Disiplin Kurulu'nun son toplantısında alınan sevk ve cezalar resmi olarak ilan edildi.</p>
                     </div>
                     <div class="news-card">
-                        <span>Sağlık & Spor</span>
-                        <h4>TFF'den Kulüplere Kapsamlı Sağlık Semineri</h4>
-                        <p>Sakatlıkların önlenmesi ve sporcu sağlığının korunması amacıyla uzman doktorlar tarafından eğitim verildi.</p>
+                        <span>FGD & Altyapı</span>
+                        <h4>Gelişim Ligleri Amatör Kulüpler Toplantısı</h4>
+                        <p>Futbol Gelişim Direktörlüğü ev sahipliğinde genç yeteneklerin gelişimi için çalıştay düzenlendi.</p>
                     </div>
                     <div class="news-card">
-                        <span>Etkinlik</span>
-                        <h4>Grassroots Futbol Gönüllüleri Eğitimi</h4>
-                        <p>Futbolu tabana yaymak ve çocuklara sevdirmek amacıyla düzenlenen antrenörlük kursları kayıtları açıldı.</p>
-                    </div>
-                    <div class="news-card">
-                        <span>Mali Kriterler</span>
-                        <h4>Kulüp Lisans ve Finansal Sürdürülebilirlik</h4>
-                        <p>Yeni sezonda kulüplerin uyması gereken lisans kriterleri ve bütçe denetimleri hakkında bilgilendirme yapıldı.</p>
+                        <span>Sağlık Kurulu</span>
+                        <h4>Kulüp Doktorlarına Kapsamlı Seminer</h4>
+                        <p>Sporcu sağlığı, sakatlık önleme ve anti-doping süreçleri üzerine bilgilendirme toplantısı yapıldı.</p>
                     </div>
                 </div>
             </main>
@@ -369,57 +390,70 @@
         </div>
     </div>
 
-    <!-- SAYFA 2: FUTBOLCULAR -->
-    <div id="page-players" class="page-section">
+    <!-- SAYFA 2: TFF KURUMSAL -->
+    <div id="page-tff" class="page-section">
         <div class="sub-page-container">
-            <h2><i class="fa-solid fa-person-running"></i> Profesyonel Futbolcular Portalı</h2>
-            <p>Bu sayfada Türkiye sınırları içerisinde lisanslı olarak forma giyen tüm profesyonel, amatör ve gelişim ligi futbolcularının güncel verilerine ulaşabilirsiniz.</p>
-            <p><strong>Arama Filtreleri:</strong> Yaş gruplarına, mevkilerine veya oynadıkları kulüplere göre futbolcu arama veritabanı yakında aktif edilecektir.</p>
+            <h2><i class="fa-solid fa-building-columns"></i> TFF Kurumsal</h2>
+            <p>Türkiye Futbol Federasyonu (TFF); Türk futbolunu ulusal ve uluslararası düzeyde yönetmek, geliştirmek ve denetlemekle yetkili resmi kurumdur.</p>
+            <p><strong>Başkanlık ve Yönetim Kurulu:</strong> Federasyonumuzun idari yapılanması, statüleri, ana statü kuralları ve genel kurul kararları bu alanda şeffaf bir şekilde paylaşılmaktadır.</p>
+            <p><strong>Kurullar:</strong> Merkez Hakem Kurulu, Disiplin Kurulu, Etik Kurulu, Kulüp Lisans Kurulu ve Sağlık Kurulu aktif olarak görev yapmaktadır.</p>
+        </div>
+    </div>
+
+    <!-- SAYFA 3: MİLLİ TAKIMLAR -->
+    <div id="page-mill-takimlar" class="page-section">
+        <div class="sub-page-container">
+            <h2><i class="fa-solid fa-shirt"></i> Milli Takımlar</h2>
+            <p>Ay-yıldızlı bayrağımızı gururla temsil eden tüm yaş gruplarımız ve millî takımlarımızın ana merkezi:</p>
             <ul>
-                <li>Süper Lig Oyuncu İstatistikleri</li>
-                <li>1. Lig ve 2. Lig Oyuncu Havuzları</li>
-                <li>Kadın Futbol Süper Ligi Kayıtları</li>
+                <li><strong>Erkek A Milli Takımı:</strong> UEFA Uluslar Ligi ve Dünya Kupası Elemeleri maç programı ve kadroları.</li>
+                <li><strong>Ümit Milli Takım (U21):</strong> Avrupa Şampiyonası eleme grubu maçları ve genç yetenek havuzu.</li>
+                <li><strong>Genç Milli Takımlar:</strong> U19, U18, U17, U16 ve U15 yaş grupları hazırlık kampları.</li>
             </ul>
         </div>
     </div>
 
-    <!-- SAYFA 3: HAKEMLER -->
-    <div id="page-referees" class="page-section">
+    <!-- SAYFA 4: LİGLER -->
+    <div id="page-ligler" class="page-section">
         <div class="sub-page-container">
-            <h2><i class="fa-solid fa-whistle"></i> Merkez Hakem Kurulu (MHK) ve Hakemler</h2>
-            <p>Üst klasman, hakem, yardımcı hakem ve gözlemcilerimizin sicil bilgileri, fiziksel test sonuçları ve görev aldıkları müsabaka listeleri bu alanda yer almaktadır.</p>
-            <p>Hakem bilgi sistemi entegrasyonu ile haftalık atama raporlarını takip edebilirsiniz.</p>
+            <h2><i class="fa-solid fa-trophy"></i> Ligler ve Puan Durumları</h2>
+            <p>Türkiye Futbol Federasyonu bünyesinde oynanan profesyonel ve amatör liglerin güncel fikstürleri, puan cetvelleri ve gol krallığı tabloları:</p>
+            <p>• Trendyol Süper Lig<br>• Trendyol 1. Lig<br>• TFF 2. Lig<br>• TFF 3. Lig<br>• Bölgesel Amatör Lig (BAL)</p>
         </div>
     </div>
 
-    <!-- SAYFA 4: KULÜPLER -->
-    <div id="page-clubs" class="page-section">
+    <!-- SAYFA 5: KUPALAR -->
+    <div id="page-kupalar" class="page-section">
         <div class="sub-page-container">
-            <h2><i class="fa-solid fa-shield-halved"></i> Kulüpler ve Tesisler</h2>
-            <p>TFF bünyesindeki tüm profesyonel ve amatör futbol kulüplerinin resmi bilgileri, stadyum kapasiteleri ve altyapı tesis detayları.</p>
-            <p>Kulüp resmi yetkilileri, tüzükler ve resmi yazışma adreslerine bu sayfadan erişim sağlanır.</p>
+            <h2><i class="fa-solid fa-award"></i> Kupalar</h2>
+            <p>Türk futbolunun en prestijli kupa organizasyonları:</p>
+            <p><strong>Ziraat Türkiye Kupası:</strong> Ülkenin dört bir yanından profesyonel ve amatör kulüplerin kupa heyecanı, eşleşmeler, maç özetleri ve tarihsel arşiv.</p>
+            <p><strong>TFF Süper Kupa:</strong> Sezonun en büyük iki takımının şampiyonluk mücadelesi.</p>
         </div>
     </div>
 
-    <!-- SAYFA 5: DUYURULAR -->
-    <div id="page-announcements" class="page-section">
+    <!-- SAYFA 6: KADIN FUTBOLU -->
+    <div id="page-kadin-futbolu" class="page-section">
         <div class="sub-page-container">
-            <h2><i class="fa-solid fa-bullhorn"></i> TFF Resmi Duyurular ve Bildiriler</h2>
-            <p>Federasyonumuz tarafından yayımlanan son dakika genelgeleri, transfer dönemi tarihleri, statü değişiklikleri ve resmi açıklamalar listesi:</p>
-            <hr style="margin: 15px 0; border: 0; border-top: 1px solid #ddd;">
-            <p><strong>[12.08.2026]</strong> 2026-2027 Sezonu Transfer ve Tescil Dönemi Ek Süre Bildirisi</p>
-            <p><strong>[05.08.2026]</strong> Statü Güncellemesi: Yabancı Oyuncu Kriterleri Hakkında Önemli Duyuru</p>
-            <p><strong>[28.07.2026]</strong> Milli Takım Kombine Bilet Satışları Hakkında Bilgilendirme</p>
+            <h2><i class="fa-solid fa-person-dressburst"></i> Kadın Futbolu</h2>
+            <p>Ülkemizde hızla gelişen ve büyük ilgi gören kadın futbolunun kalbi burada atıyor.</p>
+            <p>Suwen Kadın Futbol Süper Lig fikstürleri, Kadın A Milli Takım maçları, 1. Lig ve altyapı gelişim ligleri ile ilgili tüm istatistiki bilgiler bu sayfada yer alır.</p>
         </div>
     </div>
 
-    <!-- SAYFA 6: İLETİŞİM -->
-    <div id="page-contact" class="page-section">
+    <!-- SAYFA 7: FGD (FUTBOL GELİŞİM DİREKTÖRLÜĞÜ) -->
+    <div id="page-fgd" class="page-section">
         <div class="sub-page-container">
-            <h2><i class="fa-solid fa-envelope"></i> İletişim ve Destek</h2>
-            <p>Türkiye Futbol Federasyonu Riva Hasan Doğan Kamp ve Eğitim Tesisleri / Beykoz - İstanbul</p>
-            <p><strong>Telefon:</strong> 0 (216) 538 99 99</p>
-            <p><strong>E-posta Destek:</strong> bilgi@tff.org</p>
+            <h2><i class="fa-solid fa-graduation-cap"></i> Futbol Gelişim Direktörlüğü (FGD)</h2>
+            <p>Antrenör eğitim kursları, lisans yenileme seminerleri, Grassroots (tabana yayılım) projeleri ve genç futbolcu gelişim programları Futbol Gelişim Direktörlüğü tarafından koordine edilmektedir.</p>
+        </div>
+    </div>
+
+    <!-- SAYFA 8: BİLGİ BANKASI -->
+    <div id="page-bilgi-bankasi" class="page-section">
+        <div class="sub-page-container">
+            <h2><i class="fa-solid fa-database"></i> Futbol Bilgi Bankası</h2>
+            <p>Türkiye futbol arşivinin resmi veri tabanıdır. Futbolcular, hakemler, teknik adamlar, kulüpler, stadyumlar, cezalar ve geçmiş tüm müsabaka sonuçlarına bu modül üzerinden sorgulama yaparak erişim sağlanabilir.</p>
         </div>
     </div>
 
@@ -437,13 +471,16 @@
             pages.forEach(page => page.classList.remove('active-page'));
 
             // Seçilen sayfayı göster
-            document.getElementById('page-' + pageId).classList.add('active-page');
+            const targetPage = document.getElementById('page-' + pageId.replace(/\s+/g, '-'));
+            if(targetPage) {
+                targetPage.classList.add('active-page');
+            }
 
             // Menü aktiflik durumunu güncelle
             const navLinks = document.querySelectorAll('nav ul li a');
             navLinks.forEach(link => link.classList.remove('active'));
             
-            const activeNav = document.getElementById('nav-' + pageId);
+            const activeNav = document.getElementById('nav-' + pageId.replace(/\s+/g, '-'));
             if(activeNav) activeNav.classList.add('active');
 
             // Sayfa başına kaydır
@@ -468,14 +505,14 @@
                 age: 32,
                 status: "Danışmanlık",
                 condition: "Aktif",
-                photo: "https://hizliresim.com/heiqfzop" // Doğrudan bağlantı için alternatif URL yapısı kullanılabiliyor, görsel bağlantısı atandı
+                photo: "https://hizliresim.com/heiqfzop" 
             },
             "19030": {
                 name: "AHMET YILMAZ",
                 age: 28,
                 status: "Profesyonel Futbolcu",
                 condition: "Aktif",
-                photo: "https://via.placeholder.com/80"
+                photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
             }
         };
 
@@ -489,7 +526,7 @@
                 resAge.textContent = person.age;
                 resStatus.textContent = person.status;
                 resCondition.textContent = person.condition;
-                resPhoto.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"; // İstediğin fotoğrafın yüklenme ihtimaline karşı şık bir portre görseli entegre edildi
+                resPhoto.src = person.photo;
                 resultCard.style.display = 'block';
             } else {
                 alert("Bu lisans numarasına ait kayıt bulunamadı! (Örnek arama için: 34503 yazabilirsiniz)");
