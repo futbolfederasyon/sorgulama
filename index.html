@@ -283,6 +283,50 @@
             object-fit: cover;
         }
 
+        /* Puan Durumu Tablosu Stili */
+        .standings-box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .standings-box h3 {
+            font-size: 16px;
+            color: var(--dark-bg);
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--primary-red);
+            padding-bottom: 5px;
+        }
+
+        .standings-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .standings-table th, .standings-table td {
+            padding: 8px 6px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .standings-table th {
+            background-color: #f8f9fa;
+            color: #444;
+            font-weight: 600;
+        }
+
+        .standings-table tr:hover {
+            background-color: #fdfdfd;
+        }
+
+        .standings-table td:nth-child(2) {
+            text-align: left;
+            font-weight: 500;
+        }
+
         /* Haberler ve İçerik (Sağ Taraf) */
         .content-area {
             display: flex;
@@ -485,7 +529,7 @@
                 </div>
             </aside>
 
-            <!-- Sağ Panel: Haberler ve Eklenecek Bannerlar -->
+            <!-- Sağ Panel: Haberler, Puan Durumu ve Bannerlar -->
             <main class="content-area">
                 <div class="hero-news">
                     <span>Milli Takımlar</span>
@@ -512,7 +556,72 @@
                     </div>
                 </div>
 
-                <!-- Banner 2: 2026TFFFaaliyetRaporu.png -->
+                <!-- Puan Durumu Tablosu Eklendi -->
+                <div class="standings-box">
+                    <h3><i class="fa-solid fa-list-ol" style="color: var(--primary-red);"></i> Trendyol Süper Lig Puan Durumu</h3>
+                    <table class="standings-table">
+                        <thead>
+                            <tr>
+                                <th>O</th>
+                                <th>Takım</th>
+                                <th>O</th>
+                                <th>G</th>
+                                <th>B</th>
+                                <th>M</th>
+                                <th>P</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Galatasaray</td>
+                                2</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td><strong>6</strong></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Fenerbahçe</td>
+                                2</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td><strong>6</strong></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Beşiktaş</td>
+                                2</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td><strong>3</strong></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Trabzonspor</td>
+                                2</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td><strong>3</strong></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Samsunspor</td>
+                                2</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td><strong>3</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Banner 2: 2026TFFFaaliyetRaporu.png (Tekil Kullanım) -->
                 <div class="banner-container">
                     <img src="2026TFFFaaliyetRaporu.png" alt="2026 TFF Faaliyet Raporu" onerror="this.style.display='none'">
                 </div>
@@ -530,25 +639,7 @@
                     </div>
                 </div>
 
-                <!-- Banner 3: 2026TFFFaaliyetRaporu (1).png -->
-                <div class="banner-container">
-                    <img src="2026TFFFaaliyetRaporu (1).png" alt="TFF Ek Faaliyet Raporu" onerror="this.style.display='none'">
-                </div>
-
-                <div class="news-grid">
-                    <div class="news-card">
-                        <span>FGD & Altyapı</span>
-                        <h4>Gelişim Ligleri Amatör Kulüpler Toplantısı</h4>
-                        <p>Futbol Gelişim Direktörlüğü ev sahipliğinde genç yeteneklerin gelişimi için çalıştay düzenlendi.</p>
-                    </div>
-                    <div class="news-card">
-                        <span>Sağlık Kurulu</span>
-                        <h4>Kulüp Doktorlarına Kapsamlı Seminer</h4>
-                        <p>Sporcu sağlığı, sakatlık önleme ve anti-doping süreçleri üzerine bilgilendirme toplantısı yapıldı.</p>
-                    </div>
-                </div>
-
-                <!-- Banner 4: 11teamsports-banner-2026.jpg -->
+                <!-- Banner 3: 11teamsports-banner-2026.jpg -->
                 <div class="banner-container">
                     <img src="11teamsports-banner-2026.jpg" alt="11teamsports Resmi Sponsorluk" onerror="this.style.display='none'">
                 </div>
