@@ -94,7 +94,7 @@
             display: block;
         }
 
-        /* Süper Lig Kaydırılabilir Maçlar Şeridi */
+        /* Süper Lig Kaydırılabilir Geçmiş Maçlar Şeridi */
         .match-ticker {
             background: #fff;
             padding: 12px 20px;
@@ -320,7 +320,7 @@
             border: 0;
         }
 
-        /* Puan Durumu Tablosu Stili */
+        /* Puan Durumu Tablosu Stili (Kaydırılabilir tam liste) */
         .standings-box {
             background: white;
             padding: 20px;
@@ -335,6 +335,11 @@
             margin-bottom: 12px;
             border-bottom: 2px solid var(--primary-red);
             padding-bottom: 5px;
+        }
+
+        .table-scroll-container {
+            max-height: 400px;
+            overflow-y: auto;
         }
 
         .standings-table {
@@ -353,6 +358,9 @@
             background-color: #f8f9fa;
             color: #444;
             font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         .standings-table tr:hover {
@@ -504,42 +512,42 @@
                 <div class="match-card-mini">
                     <div class="teams">Erzurumspor - Galatasaray</div>
                     <div class="score">0 - 4</div>
-                    <div class="status">MS (21 Ağu)</div>
+                    <div class="status">MS</div>
                 </div>
                 <div class="match-card-mini">
                     <div class="teams">Ç. Rizespor - Samsunspor</div>
                     <div class="score">0 - 2</div>
-                    <div class="status">MS (22 Ağu)</div>
+                    <div class="status">MS</div>
                 </div>
                 <div class="match-card-mini">
                     <div class="teams">Çorum FK - Kasımpaşa</div>
                     <div class="score">0 - 1</div>
-                    <div class="status">MS (22 Ağu)</div>
+                    <div class="status">MS</div>
                 </div>
                 <div class="match-card-mini">
                     <div class="teams">Fenerbahçe - Konyaspor</div>
                     <div class="score">4 - 2</div>
-                    <div class="status">MS (22 Ağu)</div>
+                    <div class="status">MS</div>
                 </div>
                 <div class="match-card-mini">
                     <div class="teams">Trabzonspor - Başakşehir</div>
                     <div class="score">2 - 1</div>
-                    <div class="status">MS (23 Ağu)</div>
+                    <div class="status">MS</div>
                 </div>
                 <div class="match-card-mini">
                     <div class="teams">Eyüpspor - Gaziantep FK</div>
                     <div class="score">0 - 1</div>
-                    <div class="status">MS (23 Ağu)</div>
+                    <div class="status">MS</div>
                 </div>
                 <div class="match-card-mini">
                     <div class="teams">Alanyaspor - Beşiktaş</div>
                     <div class="score">1 - 0</div>
-                    <div class="status">MS (23 Ağu)</div>
+                    <div class="status">MS</div>
                 </div>
                 <div class="match-card-mini">
                     <div class="teams">Göztepe - Gençlerbirliği</div>
                     <div class="score">0 - 1</div>
-                    <div class="status">MS (23 Ağu)</div>
+                    <div class="status">MS</div>
                 </div>
             </div>
         </div>
@@ -616,96 +624,44 @@
                     </div>
                 </div>
 
-                <!-- Tam Puan Durumu Tablosu -->
+                <!-- Tam ve Güncel Puan Durumu Tablosu (18 Takım) -->
                 <div class="standings-box">
-                    <h3><i class="fa-solid fa-list-ol" style="color: var(--primary-red);"></i> Trendyol Süper Lig Puan Durumu</h3>
-                    <table class="standings-table">
-                        <thead>
-                            <tr>
-                                <th>Sıra</th>
-                                <th>Takım</th>
-                                <th>O</th>
-                                <th>G</th>
-                                <th>B</th>
-                                <th>M</th>
-                                <th>P</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Galatasaray</td>
-                                <td>2</td>
-                                <td>2</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td><strong>6</strong></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Fenerbahçe</td>
-                                <td>2</td>
-                                <td>2</td>
-                                <td>0</td>
-                                <td>0</td>
-                                <td><strong>6</strong></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Trabzonspor</td>
-                                <td>2</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td><strong>4</strong></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Beşiktaş</td>
-                                <td>2</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td><strong>3</strong></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Samsunspor</td>
-                                <td>2</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td><strong>3</strong></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Başakşehir</td>
-                                <td>2</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td><strong>3</strong></td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Kasımpaşa</td>
-                                <td>2</td>
-                                <td>1</td>
-                                <td>0</td>
-                                <td>1</td>
-                                <td><strong>3</strong></td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Göztepe</td>
-                                <td>2</td>
-                                <td>0</td>
-                                <td>2</td>
-                                <td>0</td>
-                                <td><strong>2</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h3><i class="fa-solid fa-list-ol" style="color: var(--primary-red);"></i> Trendyol Süper Lig Puan Durumu (Güncel)</h3>
+                    <div class="table-scroll-container">
+                        <table class="standings-table">
+                            <thead>
+                                <tr>
+                                    <th>Sıra</th>
+                                    <th>Takım</th>
+                                    <th>O</th>
+                                    <th>G</th>
+                                    <th>B</th>
+                                    <th>M</th>
+                                    <th>P</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>Gençlerbirliği</td><td>2</td><td>2</td><td>0</td><td>0</td><td><strong>6</strong></td></tr>
+                                <tr><td>2</td><td>Galatasaray</td><td>2</td><td>1</td><td>1</td><td>0</td><td><strong>4</strong></td></tr>
+                                <tr><td>3</td><td>Samsunspor</td><td>2</td><td>1</td><td>1</td><td>0</td><td><strong>4</strong></td></tr>
+                                <tr><td>4</td><td>Trabzonspor</td><td>2</td><td>1</td><td>1</td><td>0</td><td><strong>4</strong></td></tr>
+                                <tr><td>5</td><td>Alanyaspor</td><td>2</td><td>1</td><td>1</td><td>0</td><td><strong>4</strong></td></tr>
+                                <tr><td>6</td><td>Gaziantep FK</td><td>2</td><td>1</td><td>1</td><td>0</td><td><strong>4</strong></td></tr>
+                                <tr><td>7</td><td>Kasımpaşa</td><td>2</td><td>1</td><td>1</td><td>0</td><td><strong>4</strong></td></tr>
+                                <tr><td>8</td><td>Amed SK</td><td>1</td><td>1</td><td>0</td><td>0</td><td><strong>3</strong></td></tr>
+                                <tr><td>9</td><td>Fenerbahçe</td><td>2</td><td>1</td><td>0</td><td>1</td><td><strong>3</strong></td></tr>
+                                <tr><td>10</td><td>Başakşehir</td><td>2</td><td>1</td><td>0</td><td>1</td><td><strong>3</strong></td></tr>
+                                <tr><td>11</td><td>Beşiktaş</td><td>2</td><td>1</td><td>0</td><td>1</td><td><strong>3</strong></td></tr>
+                                <tr><td>12</td><td>Ç. Rizespor</td><td>2</td><td>1</td><td>0</td><td>1</td><td><strong>3</strong></td></tr>
+                                <tr><td>13</td><td>Göztepe</td><td>2</td><td>0</td><td>1</td><td>1</td><td><strong>1</strong></td></tr>
+                                <tr><td>14</td><td>Çorum FK</td><td>2</td><td>0</td><td>1</td><td>1</td><td><strong>1</strong></td></tr>
+                                <tr><td>15</td><td>Eyüpspor</td><td>2</td><td>0</td><td>0</td><td>2</td><td><strong>0</strong></td></tr>
+                                <tr><td>16</td><td>Kocaelispor</td><td>1</td><td>0</td><td>0</td><td>1</td><td><strong>0</strong></td></tr>
+                                <tr><td>17</td><td>Konyaspor</td><td>2</td><td>0</td><td>0</td><td>2</td><td><strong>0</strong></td></tr>
+                                <tr><td>18</td><td>Erzurumspor FK</td><td>2</td><td>0</td><td>0</td><td>2</td><td><strong>0</strong></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Banner 2: 2026TFFFaaliyetRaporu.png -->
