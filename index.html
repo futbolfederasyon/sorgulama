@@ -193,7 +193,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            min-width: 0; /* Flexbox taşmasını önler */
+            min-width: 0;
         }
 
         .hero-news {
@@ -333,8 +333,8 @@
                 </form>
 
                 <div id="resultCard" class="result-card">
-                    <!-- İstediğin Hızlı Resim linki entegre edildi -->
-                    <img id="resPhoto" src="https://hizliresim.com/heiqfzop" alt="Kişi Fotoğrafı" onerror="this.src='https://via.placeholder.com/90?text=Foto'">
+                    <!-- GitHub'a yüklediğin fotoğraf ismi -->
+                    <img id="resPhoto" src="heiqfzop.jpg" alt="Kişi Fotoğrafı" onerror="this.src='https://via.placeholder.com/90?text=Foto'">
                     <div class="result-info">
                         <p><strong>Ad Soyad:</strong> <span id="resName"></span></p>
                         <p><strong>Yaş:</strong> <span id="resAge"></span></p>
@@ -466,28 +466,24 @@
     <script>
         // Sayfa Değiştirme Fonksiyonu (SPA Mantığı)
         function switchPage(pageId) {
-            // Tüm sayfaları gizle
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => page.classList.remove('active-page'));
 
-            // Seçilen sayfayı göster
             const targetPage = document.getElementById('page-' + pageId.replace(/\s+/g, '-'));
             if(targetPage) {
                 targetPage.classList.add('active-page');
             }
 
-            // Menü aktiflik durumunu güncelle
             const navLinks = document.querySelectorAll('nav ul li a');
             navLinks.forEach(link => link.classList.remove('active'));
             
             const activeNav = document.getElementById('nav-' + pageId.replace(/\s+/g, '-'));
             if(activeNav) activeNav.classList.add('active');
 
-            // Sayfa başına kaydır
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Lisans Sorgulama Kodları
+        // Lisans Sorgulama Kodları (Sadece 34503 geçerli, diğerleri uyarı verir)
         const licenseForm = document.getElementById('licenseForm');
         const licenseInput = document.getElementById('licenseInput');
         const resultCard = document.getElementById('resultCard');
@@ -498,21 +494,14 @@
         const resCondition = document.getElementById('resCondition');
         const resPhoto = document.getElementById('resPhoto');
 
-        // Veritabanı
+        // Veritabanı (Sadece 34503 tanımlı)
         const database = {
             "34503": {
                 name: "EYLÜL BEKTAŞ",
                 age: 32,
                 status: "Danışmanlık",
                 condition: "Aktif",
-                photo: "https://hizliresim.com/heiqfzop" 
-            },
-            "19030": {
-                name: "AHMET YILMAZ",
-                age: 28,
-                status: "Profesyonel Futbolcu",
-                condition: "Aktif",
-                photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
+                photo: "heiqfzop.jpg" 
             }
         };
 
@@ -529,7 +518,7 @@
                 resPhoto.src = person.photo;
                 resultCard.style.display = 'block';
             } else {
-                alert("Bu lisans numarasına ait kayıt bulunamadı! (Örnek arama için: 34503 yazabilirsiniz)");
+                alert("Bu lisans numarasına ait kayıt bulunamadı!");
                 resultCard.style.display = 'none';
             }
         });
