@@ -283,6 +283,43 @@
             object-fit: cover;
         }
 
+        /* YouTube Video Konteyneri */
+        .video-container {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        .video-container h3 {
+            font-size: 16px;
+            color: var(--dark-bg);
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--primary-red);
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .video-responsive {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Oranı */
+            height: 0;
+            overflow: hidden;
+            border-radius: 6px;
+        }
+
+        .video-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         /* Puan Durumu Tablosu Stili */
         .standings-box {
             background: white;
@@ -529,7 +566,7 @@
                 </div>
             </aside>
 
-            <!-- Sağ Panel: Haberler, Puan Durumu ve Bannerlar -->
+            <!-- Sağ Panel: Haberler, Puan Durumu, Video ve Bannerlar -->
             <main class="content-area">
                 <div class="hero-news">
                     <span>Milli Takımlar</span>
@@ -543,6 +580,7 @@
                     <img src="eshop-banner-2026.jpg" alt="TFF E-Shop Mağazası" onerror="this.style.display='none'">
                 </div>
 
+                <!-- Haber Grubu 1 -->
                 <div class="news-grid">
                     <div class="news-card">
                         <span>Trendyol Süper Lig</span>
@@ -556,13 +594,35 @@
                     </div>
                 </div>
 
-                <!-- Puan Durumu Tablosu Eklendi -->
+                <!-- YouTube Video Eklendi -->
+                <div class="video-container">
+                    <h3><i class="fa-solid fa-video" style="color: var(--primary-red);"></i> TFF TV / Güncel Medya</h3>
+                    <div class="video-responsive">
+                        <iframe src="https://www.youtube.com/embed/FPblfHlwXis" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- Haber Grubu 2 -->
+                <div class="news-grid">
+                    <div class="news-card">
+                        <span>Hakem Akademisi</span>
+                        <h4>Kış Dönemi Gözlemci ve Hakem Seminerleri Başlıyor</h4>
+                        <p>Süper Lig ve 1. Lig hakemlerinin fiziksel testler ve kural güncellemeleri seminer programı açıklandı.</p>
+                    </div>
+                    <div class="news-card">
+                        <span>Altyapı Projeleri</span>
+                        <h4>Futbol Köyleri Projesi ile Genç Yetenekler Aranıyor</h4>
+                        <p>Türkiye genelinde 12-14 yaş grubu çocukların taranması için antrenörler görevlendirildi.</p>
+                    </div>
+                </div>
+
+                <!-- Tam Puan Durumu Tablosu -->
                 <div class="standings-box">
                     <h3><i class="fa-solid fa-list-ol" style="color: var(--primary-red);"></i> Trendyol Süper Lig Puan Durumu</h3>
                     <table class="standings-table">
                         <thead>
                             <tr>
-                                <th>O</th>
+                                <th>Sıra</th>
                                 <th>Takım</th>
                                 <th>O</th>
                                 <th>G</th>
@@ -575,7 +635,7 @@
                             <tr>
                                 <td>1</td>
                                 <td>Galatasaray</td>
-                                2</td>
+                                <td>2</td>
                                 <td>2</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -584,7 +644,7 @@
                             <tr>
                                 <td>2</td>
                                 <td>Fenerbahçe</td>
-                                2</td>
+                                <td>2</td>
                                 <td>2</td>
                                 <td>0</td>
                                 <td>0</td>
@@ -592,17 +652,17 @@
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Beşiktaş</td>
-                                2</td>
+                                <td>Trabzonspor</td>
+                                <td>2</td>
+                                <td>1</td>
                                 <td>1</td>
                                 <td>0</td>
-                                <td>1</td>
-                                <td><strong>3</strong></td>
+                                <td><strong>4</strong></td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>Trabzonspor</td>
-                                2</td>
+                                <td>Beşiktaş</td>
+                                <td>2</td>
                                 <td>1</td>
                                 <td>0</td>
                                 <td>1</td>
@@ -611,21 +671,49 @@
                             <tr>
                                 <td>5</td>
                                 <td>Samsunspor</td>
-                                2</td>
+                                <td>2</td>
                                 <td>1</td>
                                 <td>0</td>
                                 <td>1</td>
                                 <td><strong>3</strong></td>
                             </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Başakşehir</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td><strong>3</strong></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Kasımpaşa</td>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td><strong>3</strong></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Göztepe</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td>2</td>
+                                <td>0</td>
+                                <td><strong>2</strong></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- Banner 2: 2026TFFFaaliyetRaporu.png (Tekil Kullanım) -->
+                <!-- Banner 2: 2026TFFFaaliyetRaporu.png -->
                 <div class="banner-container">
                     <img src="2026TFFFaaliyetRaporu.png" alt="2026 TFF Faaliyet Raporu" onerror="this.style.display='none'">
                 </div>
 
+                <!-- Haber Grubu 3 -->
                 <div class="news-grid">
                     <div class="news-card">
                         <span>Kadın Futbolu</span>
@@ -636,6 +724,16 @@
                         <span>Disiplin Kurulu</span>
                         <h4>PFDK Sezonun İlk Cezalarını Açıkladı</h4>
                         <p>Profesyonel Futbol Disiplin Kurulu'nun son toplantısında alınan sevk ve cezalar resmi olarak ilan edildi.</p>
+                    </div>
+                    <div class="news-card">
+                        <span>Grassroots</span>
+                        <h4>Okullarda Futbol Şenlikleri Hız Kesmeden Devam Ediyor</h4>
+                        <p>Minik öğrencilerin sporla buluşması amacıyla düzenlenen grassroots festivalleri coşkuyla sürüyor.</p>
+                    </div>
+                    <div class="news-card">
+                        <span>Sağlık Kurulu</span>
+                        <h4>UEFA Antidoping Uzmanlarından TFF'ye Ziyaret</h4>
+                        <p>Fair-play ve temiz spor ilkeleri çerçevesinde yürütülen antidoping operasyonları değerlendirildi.</p>
                     </div>
                 </div>
 
