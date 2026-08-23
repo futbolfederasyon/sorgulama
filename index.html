@@ -94,12 +94,70 @@
             display: block;
         }
 
+        /* Süper Lig Kaydırılabilir Maçlar Şeridi */
+        .match-ticker {
+            background: #fff;
+            padding: 12px 20px;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+        .ticker-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+            scroll-behavior: smooth;
+        }
+
+        .ticker-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .ticker-container::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+
+        .match-card-mini {
+            flex: 0 0 220px;
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .match-card-mini .teams {
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .match-card-mini .score {
+            font-size: 14px;
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+
+        .match-card-mini .status {
+            font-size: 10px;
+            color: #666;
+            margin-top: 3px;
+        }
+
         /* Ana İçerik Alanı */
         .main-container {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 0 auto 20px auto;
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 320px 1fr;
             gap: 20px;
             padding: 0 15px;
         }
@@ -110,64 +168,83 @@
             }
         }
 
-        /* Lisans Sorgulama Kutusu (Sol Kenar) */
+        /* Gelişmiş Lisans Sorgulama Kutusu */
         .query-box {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: linear-gradient(145deg, #ffffff, #f9f9f9);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
             height: fit-content;
+            border-top: 5px solid var(--primary-red);
         }
 
         .query-box h3 {
             margin-bottom: 15px;
             color: var(--dark-bg);
-            border-bottom: 2px solid var(--primary-red);
-            padding-bottom: 5px;
             font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .query-box h3 i {
+            color: var(--primary-red);
         }
 
         .query-box label {
             display: block;
             margin-bottom: 8px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
+            color: #555;
         }
 
         .query-box input {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            margin-bottom: 10px;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            margin-bottom: 12px;
             font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .query-box input:focus {
+            outline: none;
+            border-color: var(--primary-red);
         }
 
         .query-box button {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background-color: var(--primary-red);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.1s;
+            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
         }
 
         .query-box button:hover {
             background-color: #b71c1c;
         }
 
+        .query-box button:active {
+            transform: scale(0.98);
+        }
+
         /* Sonuç Kartı ve Fotoğraf */
         .result-card {
-            margin-top: 15px;
-            padding: 15px;
-            background: #fff8f8;
+            margin-top: 20px;
+            padding: 18px;
+            background: #fff;
             border: 1px solid #ffcdd2;
-            border-radius: 4px;
+            border-radius: 8px;
             display: none;
             text-align: center;
+            box-shadow: inset 0 0 10px rgba(211, 47, 47, 0.05);
         }
 
         .result-card img {
@@ -177,15 +254,33 @@
             border-radius: 50%;
             border: 3px solid var(--primary-red);
             margin-bottom: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
 
         .result-info {
             text-align: left;
+            border-top: 1px dashed #eee;
+            padding-top: 10px;
         }
 
         .result-info p {
             margin-bottom: 6px;
             font-size: 13px;
+        }
+
+        /* Banner Alanları */
+        .banner-container {
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .banner-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
         }
 
         /* Haberler ve İçerik (Sağ Taraf) */
@@ -321,19 +416,65 @@
 
     <!-- SAYFA 1: ANA SAYFA -->
     <div id="page-home" class="page-section active-page">
+        
+        <!-- Süper Lig Kaydırılabilir Geçmiş Maçlar Şeridi -->
+        <div class="match-ticker">
+            <div class="ticker-container">
+                <div class="match-card-mini">
+                    <div class="teams">Erzurumspor - Galatasaray</div>
+                    <div class="score">0 - 4</div>
+                    <div class="status">MS (21 Ağu)</div>
+                </div>
+                <div class="match-card-mini">
+                    <div class="teams">Ç. Rizespor - Samsunspor</div>
+                    <div class="score">0 - 2</div>
+                    <div class="status">MS (22 Ağu)</div>
+                </div>
+                <div class="match-card-mini">
+                    <div class="teams">Çorum FK - Kasımpaşa</div>
+                    <div class="score">0 - 1</div>
+                    <div class="status">MS (22 Ağu)</div>
+                </div>
+                <div class="match-card-mini">
+                    <div class="teams">Fenerbahçe - Konyaspor</div>
+                    <div class="score">4 - 2</div>
+                    <div class="status">MS (22 Ağu)</div>
+                </div>
+                <div class="match-card-mini">
+                    <div class="teams">Trabzonspor - Başakşehir</div>
+                    <div class="score">2 - 1</div>
+                    <div class="status">MS (23 Ağu)</div>
+                </div>
+                <div class="match-card-mini">
+                    <div class="teams">Eyüpspor - Gaziantep FK</div>
+                    <div class="score">0 - 1</div>
+                    <div class="status">MS (23 Ağu)</div>
+                </div>
+                <div class="match-card-mini">
+                    <div class="teams">Alanyaspor - Beşiktaş</div>
+                    <div class="score">1 - 0</div>
+                    <div class="status">MS (23 Ağu)</div>
+                </div>
+                <div class="match-card-mini">
+                    <div class="teams">Göztepe - Gençlerbirliği</div>
+                    <div class="score">0 - 1</div>
+                    <div class="status">MS (23 Ağu)</div>
+                </div>
+            </div>
+        </div>
+
         <div class="main-container">
             
-            <!-- Sol Panel: Lisans Sorgulama -->
+            <!-- Sol Panel: Gelişmiş Lisans Sorgulama -->
             <aside class="query-box">
                 <h3><i class="fa-solid fa-id-card"></i> Lisans Sorgulama</h3>
                 <form id="licenseForm">
                     <label for="licenseInput">Lisans Numarası:</label>
                     <input type="text" id="licenseInput" placeholder="5 haneli lisans numarasını girin" required>
-                    <button type="submit">Sorgula</button>
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i> Sorgula</button>
                 </form>
 
                 <div id="resultCard" class="result-card">
-                    <!-- GitHub'a yüklediğin fotoğraf ismi -->
                     <img id="resPhoto" src="heiqfzop.jpg" alt="Kişi Fotoğrafı" onerror="this.src='https://via.placeholder.com/90?text=Foto'">
                     <div class="result-info">
                         <p><strong>Ad Soyad:</strong> <span id="resName"></span></p>
@@ -344,13 +485,18 @@
                 </div>
             </aside>
 
-            <!-- Sağ Panel: Haberler ve Akış -->
+            <!-- Sağ Panel: Haberler ve Eklenecek Bannerlar -->
             <main class="content-area">
                 <div class="hero-news">
                     <span>Milli Takımlar</span>
                     <h2>A Millî Takımımızın UEFA Uluslar Ligi Aday Kadrosu ve Kamp Programı Netleşti</h2>
                     <p>A Millî Futbol Takımımızın eylül ayında oynayacağı kritik karşılaşmaların hazırlıkları Riva Hasan Doğan Kamp ve Eğitim Tesisleri'nde başlayacak. Teknik heyet basın toplantısı düzenleyecek.</p>
                     <a href="#" style="color: var(--primary-red); font-weight: bold; text-decoration: none; font-size: 14px;">Haberin Devamı &rarr;</a>
+                </div>
+
+                <!-- Banner 1: eshop-banner-2026.jpg -->
+                <div class="banner-container">
+                    <img src="eshop-banner-2026.jpg" alt="TFF E-Shop Mağazası" onerror="this.style.display='none'">
                 </div>
 
                 <div class="news-grid">
@@ -364,6 +510,14 @@
                         <h4>Türkiye Kupası Eleme Turu Kura Çekimi</h4>
                         <p>Futbol heyecanının alt liglerden süper lige doruğa çıkacağı kura çekimi tarihi duyuruldu.</p>
                     </div>
+                </div>
+
+                <!-- Banner 2: 2026TFFFaaliyetRaporu.png -->
+                <div class="banner-container">
+                    <img src="2026TFFFaaliyetRaporu.png" alt="2026 TFF Faaliyet Raporu" onerror="this.style.display='none'">
+                </div>
+
+                <div class="news-grid">
                     <div class="news-card">
                         <span>Kadın Futbolu</span>
                         <h4>Suwen Kadın Futbol Süper Ligi Fikstürü Çekildi</h4>
@@ -374,6 +528,14 @@
                         <h4>PFDK Sezonun İlk Cezalarını Açıkladı</h4>
                         <p>Profesyonel Futbol Disiplin Kurulu'nun son toplantısında alınan sevk ve cezalar resmi olarak ilan edildi.</p>
                     </div>
+                </div>
+
+                <!-- Banner 3: 2026TFFFaaliyetRaporu (1).png -->
+                <div class="banner-container">
+                    <img src="2026TFFFaaliyetRaporu (1).png" alt="TFF Ek Faaliyet Raporu" onerror="this.style.display='none'">
+                </div>
+
+                <div class="news-grid">
                     <div class="news-card">
                         <span>FGD & Altyapı</span>
                         <h4>Gelişim Ligleri Amatör Kulüpler Toplantısı</h4>
@@ -385,6 +547,12 @@
                         <p>Sporcu sağlığı, sakatlık önleme ve anti-doping süreçleri üzerine bilgilendirme toplantısı yapıldı.</p>
                     </div>
                 </div>
+
+                <!-- Banner 4: 11teamsports-banner-2026.jpg -->
+                <div class="banner-container">
+                    <img src="11teamsports-banner-2026.jpg" alt="11teamsports Resmi Sponsorluk" onerror="this.style.display='none'">
+                </div>
+
             </main>
 
         </div>
@@ -464,7 +632,6 @@
 
     <!-- JavaScript ile Sayfa Geçişleri ve Lisans Sorgulama -->
     <script>
-        // Sayfa Değiştirme Fonksiyonu (SPA Mantığı)
         function switchPage(pageId) {
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => page.classList.remove('active-page'));
@@ -494,7 +661,6 @@
         const resCondition = document.getElementById('resCondition');
         const resPhoto = document.getElementById('resPhoto');
 
-        // Veritabanı (Sadece 34503 tanımlı)
         const database = {
             "34503": {
                 name: "EYLÜL BEKTAŞ",
